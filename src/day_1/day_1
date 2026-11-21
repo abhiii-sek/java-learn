@@ -1,0 +1,71 @@
+JDK vs JRE vs JVM :
+
+Term	Stands for	What it is	Who needs it
+JVM	Java Virtual Machine	The engine that loads, verifies, and executes bytecode, and manages memory and garbage collection	Anyone running Java
+JRE	Java Runtime Environment	JVM plus the standard class libraries (java.lang, java.util, ...)	Historically, people who only run Java apps
+JDK	Java Development Kit	JRE plus development tools: javac, jar, jdb (debugger), javadoc, jshell, ...	Developers
+┌──────────────────── JDK ────────────────────┐
+│  javac, jar, jshell, jdb, javadoc ...       │
+│  ┌──────────────── JRE ──────────────────┐  │
+│  │  Standard libraries (java.lang, util)  │  │
+│  │  ┌──────────── JVM ────────────────┐   │  │
+│  │  │ Class loader, bytecode verifier,│   │  │
+│  │  │ interpreter, JIT, GC            │   │  │
+│  │  └─────────────────────────────────┘   │  │
+│  └────────────────────────────────────────┘  │
+└──────────────────────────────────────────────┘
+
+Types of print
+1) print - no new line
+2) println - print then next line
+3) printf - formatter while printing
+
+
+java is a statically typed language - a variable's type is fixed at compile time.
+
+3.9 The 8 Primitive Data Types
+
+Primitives store the actual value directly. Everything else (String, arrays, your classes) is a reference type.
+ That's covered in later modules.
+
+Type	Size	Range / Precision	Default use	Literal example
+byte	8 bits	−128 to 127	raw binary data, file/network bytes	byte b = 10;
+short	16 bits	−32,768 to 32,767	rarely used	short s = 1000;
+int	32 bits	about −2.1 billion to 2.1 billion (−2³¹ to 2³¹−1)	default for whole numbers	int n = 42;
+long	64 bits	about ±9.2 × 10¹⁸	IDs, timestamps in ms, large counts, money in paise	long t = 1_700_000_000_000L;
+float	32 bits	about 6–7 significant digits	rarely in backend work	float f = 3.14f;
+double	64 bits	about 15–16 significant digits	default for decimals (measurements, ratios)	double d = 3.14;
+char	16 bits	0 to 65,535 (one UTF-16 code unit)	single character	char c = 'A';
+boolean	JVM-dependent	true / false	flags, conditions	boolean active = true;
+
+Critical details:
+
+Integer literals are int by default. long x = 3000000000; fails to compile ("integer number too large")
+because 3 billion doesn't fit in int. Write 3000000000L (use capital L; a lowercase l looks like 1).
+Decimal literals are double by default. float f = 3.14; fails to compile. Write 3.14f.
+Underscores improve readability: 1_000_000 equals 1000000.
+char is a number internally. 'A' is 65, 'a' is 97, '0' is 48. So 'A' + 1 evaluates to the int 66.
+boolean is not a number. Unlike C, boolean b = 0; doesn't compile, and you can't cast between int and boolean.
+Overflow happens silently for integer types:
+
+Short-circuit evaluation:
+
+A && B: if A is false, B is not evaluated (the result must already be false).
+A || B: if A is true, B is not evaluated.
+
+what is JDK :
+JDK stands for Java Development Kit. It contains JRE, Debugger, Jar, Javadocs everything you need to develop a
+java application.
+
+what is JRE :
+JRE stands for Java Runtime Environment. It contains JVM and packages such as java.lang, java.utils everything you
+ need to write a java code.
+
+what is JVM :
+JVM stands for Java Virtual Machine. It contains compiler like JIT, class loader. It the native code which load
+the bytecode, validate the bytecode and execute in machine code.
+
+what is JIT :
+JIT stand for for Just In Time - JVM contains JIT compiler. Initially JVM complies the bytecode into machine code.
+JIT is able to identifies hot spot (frequently called methods) and complies them into optimize machine instructions
+for fast speed.
